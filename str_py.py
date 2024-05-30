@@ -15,7 +15,7 @@ def predict_loan_status(data):
         st.markdown(f"<h1 style='color:red;'>{'Loan Not Approved'}</h1>", unsafe_allow_html=True)
 
 # Streamlit interface
-st.title('Loan Status Prediction Using Machine Learning')
+st.title('Loan Approval')
 
 # Inject custom CSS with HTML
 st.markdown("""

@@ -12,7 +12,7 @@ def predict_loan_status(data):
     return "Loan Approved" if result == 1 else "Loan Not Approved"
 
 # Streamlit interface
-st.title('Loan Status Prediction Using Machine Learning')
+st.title('Loan approval dashboard')
 
 # Input fields
 p1 = st.selectbox('Gender', [0, 1], format_func=lambda x: "Female" if x == 0 else "Male")

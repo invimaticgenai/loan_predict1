@@ -9,10 +9,22 @@ model = joblib.load('loan_status_predict')
 def predict_loan_status(data):
     df = pd.DataFrame(data, index=[0])
     result = model.predict(df)
-    return "Loan Approved" if result == 1 else "Loan Not Approved"
+    if result == 1:
+        st.markdown(f"<h1 style='color:green;'>{'Loan Approved'}</h1>", unsafe_allow_html=True)
+    else:
+        st.markdown(f"<h1 style='color:red;'>{'Loan Not Approved'}</h1>", unsafe_allow_html=True)
 
 # Streamlit interface
-st.title('Loan approval dashboard')
+st.title('Loan Status Prediction Using Machine Learning')
+
+# Inject custom CSS with HTML
+st.markdown("""
+<style>
+h1 {
+    font-size: 30px;  # Adjust font size here
+}
+</style>
+""", unsafe_allow_html=True)
 
 # Input fields
 p1 = st.selectbox('Gender', [0, 1], format_func=lambda x: "Female" if x == 0 else "Male")
@@ -46,6 +58,4 @@ if st.button('Predict Loan Status'):
     }
 
     # Prediction
-    result = predict_loan_status(data)
-    st.success(result)
-
+    predict_loan_status(data)
